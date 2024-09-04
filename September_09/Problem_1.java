@@ -8,10 +8,10 @@ public class Problem_1 {
   }
 
   public static void runTests() {
-    assert reverseString("hello").equals("olleh") : "Test 1 failed";
-    assert reverseString("world").equals("dlrow") : "Test 2 failed";
-    assert reverseString("Python").equals("nohtyP") : "Test 3 failed";
-    assert reverseString("practice").equals("ecitcarp") : "Test 4 failed";
+    assert reverseString("hello").equals("olleh");
+    assert reverseString("world").equals("dlrow");
+    assert reverseString("Python").equals("nohtyP");
+    assert reverseString("practice").equals("ecitcarp");
     System.out.println("All tests passed!");
   }
 
