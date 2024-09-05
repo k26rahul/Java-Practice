@@ -2,7 +2,7 @@
 
 1. **Navigate to the Package Directory:**
 
-   - Navigate to the package directory for the date you want to solve the problems. For today, this would be the `September_09` directory.
+   - Navigate to the package directory for the set you want to solve the problems, e.g., `Basic_17`.
 
 2. **Create a New Java File:**
 
@@ -10,7 +10,7 @@
    - Implement your Java class within this file.
 
    ```java
-   package September_09;
+   package Basic_17;
 
    public class Problem_2 {
 
