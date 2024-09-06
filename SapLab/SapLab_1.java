@@ -1,3 +1,5 @@
+package SapLab;
+
 import java.util.Scanner;
 
 public class SapLab_1 {
