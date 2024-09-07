@@ -1,5 +1,11 @@
 ## Creating Problem Files
 
+> **Important Note:**
+>
+> Make sure to enable assertions by setting the value `"-ea"` in VS Code. This is essential for running assertions in your Java test cases. You can enable it by navigating to this setting:
+>
+> vscode://settings/java.debug.settings.vmArgs
+
 1. **Navigate to the Package Directory:**
 
    - Navigate to the package directory for the set you want to solve the problems, e.g., `Basic_17`.
@@ -14,6 +20,14 @@
 
    public class Problem_2 {
 
+       public static void main(String[] args) {
+           // Implementation call
+           System.out.println(problemFunction(arguments));
+
+           // Uncomment the following line to run tests
+           // runTests();
+       }
+
        // Define your problem-specific method here
        public static ReturnType problemFunction(Parameters) {
            // Your implementation here
@@ -21,15 +35,8 @@
 
        // Define a method for running tests
        public static void runTests() {
+           // Test calls
            System.out.println("All tests passed!");
-       }
-
-       public static void main(String[] args) {
-           // Implementation call
-           System.out.println(problemFunction(arguments));
-
-           // Uncomment the following line to run tests
-           // runTests();
        }
    }
    ```
