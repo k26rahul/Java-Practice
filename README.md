@@ -1,10 +1,46 @@
-## Creating Problem Files
+## Running Java Code
 
-> **Important Note:**
->
-> Make sure to enable assertions by setting the value `"-ea"` in VS Code. This is essential for running assertions in your Java test cases. You can enable it by navigating to this setting:
->
-> vscode://settings/java.debug.settings.vmArgs
+There are two ways to run Java code:
+
+1. **VS Code**: Use Java extensions. Write your Java code in separate `.java` files and run them inside VS Code. Install the Java Extension Pack for support.
+2. **Jupyter Notebooks**: Install the IJava Kernel from [here](https://github.com/SpencerPark/IJava). Follow the instructions to set it up, then create notebooks and select the Java kernel.
+
+---
+
+## Important Note
+
+Make sure to enable assertions by setting the value `"-ea"` in VS Code. This is essential for running assertions in your Java test cases. You can enable it by navigating to this setting:
+
+vscode://settings/java.debug.settings.vmArgs
+
+**For running assertions in IJava Kernel**:  
+You have to edit the `kernel.json` file located at:  
+`C:\Users\k26ra\AppData\Local\Programs\Python\Python312\share\jupyter\kernels\java`.  
+**Note:** Replace `"k26ra"` with **your own username** in the path.
+
+To enable assertions, the `-ea` flag must be passed in the JVM arguments. In the IJava kernel, this can be done by editing the `kernel.json` and adding the `-ea` flag to the `argv` list.
+
+The updated `kernel.json` would look like this:
+
+```json
+{
+  "argv": [
+    "java",
+    "-ea",
+    "-jar",
+    "C:\\Users\\YourUsername\\AppData\\Local\\Programs\\Python\\Python312\\share\\jupyter\\kernels\\java/ijava-1.3.0.jar",
+    "{connection_file}"
+  ],
+  "display_name": "Java",
+  "env": {},
+  "interrupt_mode": "message",
+  "language": "java"
+}
+```
+
+---
+
+## Creating Problem Files
 
 1. **Navigate to the Package Directory:**
 
@@ -41,11 +77,11 @@
    }
    ```
 
-   - **Problem-Specific Method:** Define a specific method for the problem you are solving (e.g., `problemFunction`). This method should contain the logic for solving the problem.
+- **Problem-Specific Method:** Define a specific method for the problem you are solving (e.g., `problemFunction`). This method should contain the logic for solving the problem.
 
-   - **Test Method:** Create a `runTests` method that contains assertions to validate your problem function. Each assertion should check if the method returns the expected result. This helps ensure your implementation is correct.
+- **Test Method:** Create a `runTests` method that contains assertions to validate your problem function. Each assertion should check if the method returns the expected result. This helps ensure your implementation is correct.
 
-   - **Main Method:** The `main` method should include a call to your problem-specific method with sample input and print the result. After confirming your implementation is correct, you can uncomment the call to `runTests` to run your test cases.
+- **Main Method:** The `main` method should include a call to your problem-specific method with sample input and print the result. After confirming your implementation is correct, you can uncomment the call to `runTests` to run your test cases.
 
 ## Running Java Files in VS Code
 

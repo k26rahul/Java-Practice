@@ -19,6 +19,6 @@ public class Problem_1 {
     assert reverseString("Python").equals("nohtyP");
     assert reverseString("practice").equals("ecitcarp");
 
-    System.out.println("All tests passed!");
+    System.out.println("✅ All tests passed!");
   }
 }
