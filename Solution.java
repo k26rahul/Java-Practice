@@ -1,42 +1,55 @@
 class Solution {
+  public static int upperBound(int[] arr, int x, int n) {
+    int low = 0, high = n - 1;
+    int ans = n;
+
+    while (low <= high) {
+      int mid = (low + high) / 2;
+      // Check if the middle element is greater than x
+      if (arr[mid] > x) {
+        ans = mid;
+        high = mid - 1; // Move to the left part
+      } else {
+        low = mid + 1; // Move to the right part
+      }
+    }
+    return ans;
+  }
+
+  public static int countSmallEqual(int[][] matrix, int R, int C, int x) {
+    int count = 0;
+    for (int i = 0; i < R; i++) {
+      count += upperBound(matrix[i], x, C); // Count elements less than or equal to x in each row
+    }
+    return count;
+  }
+
   public static int median(int[][] matrix, int R, int C) {
-    // Binary Search Approach
-    int low = matrix[0][0];
-    int high = matrix[R - 1][C - 1];
-    int desired = (R * C + 1) / 2;
+    int low = Integer.MAX_VALUE, high = Integer.MIN_VALUE;
 
-    while (low < high) {
-      int mid = low + (high - low) / 2;
-      int count = 0;
+    // Determine the minimum and maximum elements in the matrix
+    for (int i = 0; i < R; i++) {
+      low = Math.min(low, matrix[i][0]); // First element of each row
+      high = Math.max(high, matrix[i][C - 1]); // Last element of each row
+    }
 
-      // Count elements less than or equal to mid
-      for (int i = 0; i < R; i++) {
-        count += upperBound(matrix[i], mid);
-      }
+    int requiredCount = (R * C) / 2; // The index of the median in a sorted list
 
-      if (count < desired) {
-        low = mid + 1;
+    // Binary search to find the median
+    while (low <= high) {
+      int mid = (low + high) / 2;
+      int smallEqualCount = countSmallEqual(matrix, R, C, mid);
+
+      if (smallEqualCount <= requiredCount) {
+        low = mid + 1; // Move right if there are too few elements <= mid
       } else {
-        high = mid;
+        high = mid - 1; // Move left if there are enough elements <= mid
       }
     }
-    return low;
+
+    return low; // The low pointer will have the median value
   }
 
-  // Helper function to find the upper bound of 'mid' in a row
-  private static int upperBound(int[] row, int mid) {
-    int low = 0;
-    int high = row.length;
-    while (low < high) {
-      int m = low + (high - low) / 2;
-      if (row[m] <= mid) {
-        low = m + 1;
-      } else {
-        high = m;
-      }
-    }
-    return low;
-  }
 
   public static void main(String[] args) {
     // Test calls
